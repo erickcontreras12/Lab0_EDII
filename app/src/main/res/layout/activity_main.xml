@@ -50,13 +50,16 @@
         app:layout_constraintVertical_bias="0.04" />
 
     <ListView
+        android:id="@+id/listView1"
         android:layout_width="352dp"
-        android:layout_height="426dp"
+        android:layout_height="412dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/btnPlaylist"
-        app:layout_constraintVertical_bias="0.185" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
