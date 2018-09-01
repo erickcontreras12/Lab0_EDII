@@ -13,4 +13,8 @@ public class Cancion {
     public String getNombre(){
         return title;
     }
+
+    public int getDuracion(){
+        return duration;
+    }
 }

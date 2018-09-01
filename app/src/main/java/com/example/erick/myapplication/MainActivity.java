@@ -1,5 +1,6 @@
 package com.example.erick.myapplication;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -70,9 +71,9 @@ public class MainActivity extends AppCompatActivity {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                makeText(adaptador.getContext(),"", Toast.LENGTH_LONG);
-                Cancion agregar = canciones.get(position);
-                playlist.add(agregar);
+                makeText(adaptador.getContext(),"Listo", Toast.LENGTH_LONG);
+                Cancion agregar = canciones.get(parent.getItemAtPosition(position).toString());
+                playlist.put(agregar.getNombre(),agregar);
             }
         });
 
