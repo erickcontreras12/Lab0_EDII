@@ -2,6 +2,7 @@ package com.example.erick.myapplication;
 
 import android.support.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,7 +11,8 @@ import java.util.ListIterator;
 
 public class ClaseGeneral{
     public static HashMap<String, Cancion> canciones = new HashMap<>();
-    public static HashMap<String, Cancion> playlist = new HashMap<>();
+    //public static HashMap<String, Cancion> playlist = new HashMap<>();
+    public static ArrayList<Cancion> playlist = new ArrayList<>();
 
     //Canciones
     Cancion cancion1 = new Cancion(122,"We Will Rock You");

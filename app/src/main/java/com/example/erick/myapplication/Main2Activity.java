@@ -21,6 +21,7 @@ import java.util.List;
 import static android.widget.Toast.makeText;
 import static com.example.erick.myapplication.ClaseGeneral.canciones;
 import static com.example.erick.myapplication.ClaseGeneral.playlist;
+//import static com.example.erick.myapplication.ClaseGeneral.playlist2;
 
 public class Main2Activity extends AppCompatActivity {
     ListView lista; Button volver; Switch orden;
@@ -33,7 +34,8 @@ public class Main2Activity extends AppCompatActivity {
         volver = (Button)findViewById(R.id.btnVolver);
         lista = (ListView)findViewById(R.id.listPlay);
         orden = (Switch)findViewById(R.id.sOrden);
-        mostrar = new ArrayList(playlist.keySet());
+        mostrar = new ArrayList();
+        llenarLista(mostrar,playlist);
 
 
         volver.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +54,27 @@ public class Main2Activity extends AppCompatActivity {
         orden.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    Collections.sort(playlist, new Comparator<Cancion>() {
+                        @Override
+                        public int compare(Cancion o1, Cancion o2) {
+                            return new Integer(o1.getDuracion()).compareTo(new Integer(o2.getDuracion()));
+                        }
+                    });
+                }
+                else {
+                    Collections.sort(playlist, new Comparator<Cancion>() {
+                        @Override
+                        public int compare(Cancion o1, Cancion o2) {
+                            return o1.getNombre().compareTo(o2.getNombre());
+                        }
+                    });
+                }
+                mostrar.clear();
+                llenarLista(mostrar,playlist);
 
+                lista.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -62,12 +84,19 @@ public class Main2Activity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 makeText(adapter.getContext(),"Listo", Toast.LENGTH_LONG);
                 Cancion eliminar = canciones.get(parent.getItemAtPosition(position).toString());
-                playlist.remove(eliminar.getNombre());
+                playlist.remove(eliminar);
 
                 Intent cargar = new Intent(Main2Activity.this, Main2Activity.class);
                 startActivity(cargar);
             }
         });
 
-    }}
+    }
+
+    public void llenarLista(ArrayList lista1, List<Cancion> lista2){
+        for (Cancion ca : lista2){
+         lista1.add(ca.getNombre());
+        }
+    }
+}
 

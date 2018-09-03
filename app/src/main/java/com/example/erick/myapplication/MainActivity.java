@@ -25,6 +25,7 @@ import java.util.ListIterator;
 import static android.widget.Toast.*;
 import static com.example.erick.myapplication.ClaseGeneral.canciones;
 import static com.example.erick.myapplication.ClaseGeneral.playlist;
+//import static com.example.erick.myapplication.ClaseGeneral.playlist2;
 
 public class MainActivity extends AppCompatActivity {
     Button play; ArrayAdapter adaptador;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 makeText(adaptador.getContext(),"Listo", Toast.LENGTH_LONG);
                 Cancion agregar = canciones.get(parent.getItemAtPosition(position).toString());
-                playlist.put(agregar.getNombre(),agregar);
+                playlist.add(agregar);
             }
         });
 
