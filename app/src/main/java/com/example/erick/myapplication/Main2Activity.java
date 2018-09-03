@@ -35,6 +35,7 @@ public class Main2Activity extends AppCompatActivity {
         orden = (Switch)findViewById(R.id.sOrden);
         mostrar = new ArrayList(playlist.keySet());
 
+
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,24 +52,7 @@ public class Main2Activity extends AppCompatActivity {
         orden.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                   Collections.sort((List<Cancion>) playlist, new Comparator<Cancion>() {
-                       @Override
-                       public int compare(Cancion o1, Cancion o2) {
-                           return new Integer(o1.getDuracion()).compareTo(new Integer(o2.getDuracion()));
-                       }
-                   });
 
-                }else {
-                    Collections.sort((List<Cancion>) playlist, new Comparator<Cancion>() {
-                        @Override
-                        public int compare(Cancion o1, Cancion o2) {
-                            return o1.getNombre().compareTo(o2.getNombre());
-                        }
-                    });
-                }
-
-                mostrar = new ArrayList(playlist.keySet());
             }
         });
 
